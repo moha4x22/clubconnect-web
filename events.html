@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Upcoming sample events organised by the student clubs at SQU, with dates, places and seats." />
+<meta name="author" content="Mohammed Abdulrahman Alazri" />
+<title>Events - ClubConnect</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div id="header">
+  <a href="index.html"><img src="images/logo.png" alt="ClubConnect logo" width="180" height="101" /></a>
+  <h1 class="sitename">ClubConnect</h1>
+  <p>Student club management for Sultan Qaboos University</p>
+</div>
+<div id="menu">
+  <p>
+    <a href="index.html">Home</a>
+    | <a href="clubs.html">Clubs</a>
+    | <a class="current" href="events.html">Events</a>
+    | <a href="join.html">Join a Club</a>
+    | <a href="about.html">About Us</a>
+    | <a href="contact.html">Contact Us</a>
+  </p>
+</div>
+
+<div id="content">
+<h1>Upcoming events</h1>
+<p>These events are organised by the student clubs. Dates, places and seats are sample data. To take part, use the <a href="#register">registration form</a> below the tables.</p>
+
+<table>
+  <caption> Event calendar for November 2026</caption>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Event</th>
+      <th>Club</th>
+      <th>Place</th>
+      <th>Seats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th colspan="6" class="month">November 2026</th>
+    </tr>
+    <tr>
+      <td>Sunday 01/11/2026</td>
+      <td>4:00 PM</td>
+      <td>Photo Walk</td>
+      <td>Photography Club</td>
+      <td>Library Square</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Monday 02/11/2026</td>
+      <td>5:00 PM</td>
+      <td>Intro to Web Development Workshop</td>
+      <td>Coding Club</td>
+      <td>Computer Lab</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>7:00 PM</td>
+      <td>Public Speaking Night</td>
+      <td>Debate Club</td>
+      <td>Main Hall</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <td>Wednesday 04/11/2026</td>
+      <td>4:30 PM</td>
+      <td>Friendly Football Match</td>
+      <td>Football Club</td>
+      <td>Campus Field</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>Thursday 05/11/2026</td>
+      <td>3:00 PM</td>
+      <td>Campus Clean-up Day</td>
+      <td>Volunteer Group</td>
+      <td>Main Campus</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>Sunday 08/11/2026</td>
+      <td>6:00 PM</td>
+      <td>Art Exhibition Opening</td>
+      <td>Art Club</td>
+      <td>Student Center</td>
+      <td>80</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="5">Total seats available</td>
+      <td>285</td>
+    </tr>
+  </tfoot>
+</table>
+
+<h2>How to take part</h2>
+<ol>
+  <li>Choose an event from the table above.</li>
+  <li>Go to the <a href="#register">registration form</a> </li>
+  <li>Fill in the form and press <em>Register</em>.</li>
+</ol>
+
+<blockquote>Bring your university card to every event. Seats are given in the order of registration.</blockquote>
+
+
+<h2 id="register">Register for an event</h2>
+<p>Choose an event and tell us how you will attend. The form sends your answers to a test server (httpbin.org) that shows them back to you.</p>
+
+<form action="https://httpbin.org/get" method="get">
+  <input type="hidden" name="form_name" value="event_registration" />
+
+  <p><label>Full name:</label><br />
+  <input class="wide" type="text" name="reg_name" size="28" /></p>
+
+  <p><label>University email:</label><br />
+  <input class="wide" type="text" name="reg_email" size="28" /></p>
+
+  <p><label>Student ID:</label><br />
+  <input type="text" name="reg_id" size="15" /></p>
+
+  <p><label>Event:</label><br />
+  <select name="event_name">
+    <option value="photo_walk">Photo Walk (01/11/2026)</option>
+    <option value="web_workshop">Intro to Web Development Workshop (02/11/2026)</option>
+    <option value="speaking_night">Public Speaking Night (02/11/2026)</option>
+    <option value="football_match">Friendly Football Match (04/11/2026)</option>
+    <option value="cleanup_day">Campus Clean-up Day (05/11/2026)</option>
+    <option value="art_exhibition">Art Exhibition Opening (08/11/2026)</option>
+  </select></p>
+
+  <p>How will you attend?<br />
+  <input type="radio" name="attendance" value="participant" checked="checked" /> <label>Participant</label>
+  <input type="radio" name="attendance" value="helper" /> <label>Helper</label>
+  <input type="radio" name="attendance" value="visitor" /> <label>Visitor</label></p>
+
+  <p><label>Number of guests (0 to 3):</label><br />
+  <input type="text" name="guests" size="3" maxlength="1" value="0" /></p>
+
+  <p>Send me a reminder by:<br />
+  <input type="checkbox" name="reminder" value="email" checked="checked" /> <label>Email</label>
+  <input type="checkbox" name="reminder" value="sms" /> <label>SMS</label></p>
+
+  <p><label>Special needs or comments:</label><br />
+  <textarea name="needs" rows="4" cols="30"></textarea></p>
+
+  <p><input type="submit" value="Register" />
+  <input type="reset" value="Clear form" /></p>
+</form>
+</div>
+
+
+<div id="footer">
+  <hr />
+  <p>&copy; 2026 ClubConnect ,Sultan Qaboos University</p>
+  <p><a href="index.html">Home</a> | <a href="about.html">About Us</a> | <a href="contact.html">Contact Us</a></p>
+</div>
+
+
+</body>
+</html>

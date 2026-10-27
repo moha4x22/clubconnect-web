@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Send a membership request to an SQU student club using this form." />
+<meta name="author" content="Mohammed Abdulrahman Alazri" />
+<title>Join a Club - ClubConnect</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+
+<div id="header">
+  <a href="index.html"><img src="images/logo.png" alt="ClubConnect logo" width="180" height="101" /></a>
+  <h1 class="sitename">ClubConnect</h1>
+  <p>Student club management for Sultan Qaboos University</p>
+</div>
+<div id="menu">
+  <p>
+    <a href="index.html">Home</a>
+    | <a href="clubs.html">Clubs</a>
+    | <a href="events.html">Events</a>
+    | <a class="current" href="join.html">Join a Club</a>
+    | <a href="about.html">About Us</a>
+    | <a href="contact.html">Contact Us</a>
+  </p>
+</div>
+
+<div id="content">
+<h1>Join a club</h1>
+<p>Fill in the form to send a membership request. </p>
+
+<form action="https://httpbin.org/get" method="get">
+  <input type="hidden" name="form_name" value="join_request" />
+
+  <h2>Personal details</h2>
+  <p><label>Full name:</label><br />
+  <input class="wide" type="text" name="full_name" size="28" maxlength="60" /></p>
+
+  <p><label>Student ID:</label><br />
+  <input type="text" name="student_id" size="15" maxlength="10" /></p>
+
+  <p><label>University email:</label><br />
+  <input class="wide" type="text" name="email" size="28" /></p>
+
+  <p><label>Choose a password:</label><br />
+  <input type="password" name="password" size="20" /></p>
+
+  <h2>Study details</h2>
+  <p><label>College:</label><br />
+  <select name="college">
+    <option>College of Science</option>
+    <option>College of Engineering</option>
+    <option>College of Arts and Social Sciences</option>
+    <option>College of Economics and Political Science</option>
+    <option>College of Education</option>
+    <option>College of Agricultural and Marine Sciences</option>
+  </select></p>
+
+  <p>Study level:<br />
+  <input type="radio" name="level" value="undergraduate" checked="checked" /> <label>Undergraduate</label>
+  <input type="radio" name="level" value="postgraduate" /> <label>Postgraduate</label></p>
+
+  <h2>Your club request</h2>
+  <p><label>Club you want to join:</label><br />
+  <select name="club">
+    <option value="coding">Coding Club</option>
+    <option value="debate">Debate Club</option>
+    <option value="photography">Photography Club</option>
+    <option value="art">Art Club</option>
+    <option value="football">Football Club</option>
+    <option value="volunteer">Volunteer Group</option>
+  </select></p>
+
+  <p>Your interests:<br />
+  <input type="checkbox" name="interest" value="workshops" /> <label>Workshops</label>
+  <input type="checkbox" name="interest" value="competitions" /> <label>Competitions</label>
+  <input type="checkbox" name="interest" value="trips" /> <label>Trips</label>
+  <input type="checkbox" name="interest" value="community" /> <label>Community service</label></p>
+
+  <p><label>Why do you want to join?</label><br />
+  <textarea name="motivation" rows="5" cols="30"></textarea></p>
+
+  <p><input type="checkbox" name="agree_rules" value="yes" /> <label>I agree to follow the club rules.</label></p>
+
+  <p><input type="submit" value="Send request" />
+  <input type="reset" value="Clear form" /></p>
+</form>
+</div>
+
+
+<div id="footer">
+  <hr />
+  <p>&copy; 2026 ClubConnect ,Sultan Qaboos University</p>
+  <p><a href="index.html">Home</a> | <a href="about.html">About Us</a> | <a href="contact.html">Contact Us</a></p>
+</div>
+
+</body>
+</html>

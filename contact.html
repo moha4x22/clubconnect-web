@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Send a message to the ClubConnect developer using the contact form." />
+<meta name="author" content="Mohammed Abdulrahman Alazri" />
+<title>Contact Us - ClubConnect</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+
+<div id="header">
+  <a href="index.html"><img src="images/logo.png" alt="ClubConnect logo" width="180" height="101" /></a>
+  <h1 class="sitename">ClubConnect</h1>
+  <p>Student club management for Sultan Qaboos University</p>
+</div>
+<div id="menu">
+  <p>
+    <a href="index.html">Home</a>
+    | <a href="clubs.html">Clubs</a>
+    | <a href="events.html">Events</a>
+    | <a href="join.html">Join a Club</a>
+    | <a href="about.html">About Us</a>
+    | <a class="current" href="contact.html">Contact Us</a>
+  </p>
+</div>
+
+<div id="content">
+<h1>Contact us</h1>
+<p>Have a question or found a problem? Send us a message. When you press <em>Send an email</em>, the form is sent to our email account through your email program.</p>
+
+<form method="post" action="mailto:s138949@student.squ.edu.om">
+  <p><label>Your name:</label><br />
+  <input class="wide" type="text" name="name" size="28" /></p>
+
+  <p><label>Your email:</label><br />
+  <input class="wide" type="text" name="email" size="28" /></p>
+
+  <p><label>Subject:</label><br />
+  <select name="subject">
+    <option value="question">A question</option>
+    <option value="problem">Report a problem</option>
+    <option value="suggestion">A suggestion</option>
+    <option value="club">Add my club</option>
+  </select></p>
+
+  <p><label>Message:</label><br />
+  <textarea name="message" rows="6" cols="30"></textarea></p>
+
+  <p><input type="submit" value="Send an email" />
+  <input type="reset" value="Clear form" /></p>
+</form>
+
+
+<h2>Feedback</h2>
+<p>Help us make ClubConnect better.</p>
+
+<form action="https://httpbin.org/get" method="get">
+  <input type="hidden" name="form_name" value="feedback" />
+
+  <p><label>Name :</label><br />
+  <input class="wide" type="text" name="fb_name" size="28" /></p>
+
+  <p>How easy was the website to use?<br />
+  <input type="radio" name="ease" value="very_easy" checked="checked" /> <label>Very easy</label>
+  <input type="radio" name="ease" value="easy" /> <label>Easy</label>
+  <input type="radio" name="ease" value="difficult" /> <label>Difficult</label></p>
+
+  <p><label>Which pages did you like? </label><br />
+  <select name="liked" size="4" multiple="multiple">
+    <option value="home">Home</option>
+    <option value="clubs">Clubs</option>
+    <option value="events">Events</option>
+    <option value="join">Join a Club</option>
+  </select></p>
+
+  <p><label>Your comments:</label><br />
+  <textarea name="comments" rows="5" cols="30"></textarea></p>
+
+  <p><input type="checkbox" name="contact_ok" value="yes" /> <label>You may contact me about my feedback.</label></p>
+
+  <p><input type="submit" value="Send feedback" />
+  <input type="reset" value="Clear form" /></p>
+</form>
+
+<p><strong>Email:</strong> <a href="mailto:s138949@student.squ.edu.om">s138949@student.squ.edu.om</a><br />
+</div>
+
+
+<div id="footer">
+  <hr />
+  <p>&copy; 2026 ClubConnect ,Sultan Qaboos University</p>
+  <p><a href="index.html">Home</a> | <a href="about.html">About Us</a> | <a href="contact.html">Contact Us</a></p>
+</div>
+
+
+</body>
+</html>
