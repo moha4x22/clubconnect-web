@@ -1,172 +1,180 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Directory of the sample student clubs at SQU with categories, meeting days and member numbers." />
-<meta name="author" content="Mohammed Abdulrahman Alazri" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Directory of the sample student clubs at SQU, built from a JavaScript array with search and add.">
+<meta name="author" content="Mohammed Abdulrahman Alazri">
 <title>Clubs - ClubConnect</title>
-<link rel="stylesheet" href="css/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-light">
 
+<!-- Navigation bar (same on every page). It collapses into a menu button on small screens. -->
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/logo.png" alt="ClubConnect logo" width="56" height="31" class="me-2 rounded">
+      <span class="fw-bold text-warning">ClubConnect</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Show or hide the menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="clubs.html">Clubs</a></li>
+        <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="join.html">Join a Club</a></li>
+        <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+        <li class="nav-item"><a class="nav-link" href="calculator.html">Calculator</a></li>
+        <li class="nav-item"><a class="nav-link" href="funpage.html">Fun Page</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<div id="header">
-  <a href="index.html"><img src="images/logo.png" alt="ClubConnect logo" width="180" height="101" /></a>
-  <h1 class="sitename">ClubConnect</h1>
-  <p>Student club management for Sultan Qaboos University</p>
-</div>
-<div id="menu">
-  <p>
-    <a href="index.html">Home</a>
-    | <a class="current" href="clubs.html">Clubs</a>
-    | <a href="events.html">Events</a>
-    | <a href="join.html">Join a Club</a>
-    | <a href="about.html">About Us</a>
-    | <a href="contact.html">Contact Us</a>
-  </p>
-</div>
+<main class="container my-4">
+<h1 class="text-primary">Student clubs</h1>
+<p class="lead">Browse the clubs at SQU. The table is built by JavaScript from an array of Club objects. You can search it and add a new club. All numbers are sample data.</p>
 
-<div id="content">
-<h1>Student clubs</h1>
-<p>Browse the clubs at SQU. The table groups the clubs by category and shows when each club meets. All numbers are sample data.</p>
+<!-- Search -->
+<div class="card mb-3"><div class="card-body">
+  <label for="clubSearch" class="form-label fw-bold">Search clubs</label>
+  <div class="row g-2">
+    <div class="col-12 col-md-8"><input type="text" class="form-control" id="clubSearch" placeholder="Type a name, category, day or activity" oninput="searchClubs()"></div>
+    <div class="col-6 col-md-2 d-grid"><button type="button" class="btn btn-primary" onclick="searchClubs()">Search</button></div>
+    <div class="col-6 col-md-2 d-grid"><button type="button" class="btn btn-outline-secondary" onclick="resetClubSearch()">Show all</button></div>
+  </div>
+</div></div>
 
-<table>
-  <caption> Club directory </caption>
-  <thead>
-    <tr>
-      <th rowspan="2">Club</th>
-      <th colspan="3">Details</th>
-      <th rowspan="2">Members</th>
-    </tr>
-    <tr>
-      <th>Category</th>
-      <th>Description</th>
-      <th>Meets</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href="#coding">Coding Club</a></td>
-      <td rowspan="2" class="academic">Academic</td>
-      <td>Workshops on programming and web development</td>
-      <td>Sunday and Thursday</td>
-      <td>48</td>
-    </tr>
-    <tr>
-      <td><a href="#debate">Debate Club</a></td>
-      <td>Public speaking and debate practice</td>
-      <td>Monday</td>
-      <td>32</td>
-    </tr>
-    <tr>
-      <td><a href="#photography">Photography Club</a></td>
-      <td rowspan="2" class="culture">Culture</td>
-      <td>Photography and video activities</td>
-      <td>Monday and Wednesday</td>
-      <td>41</td>
-    </tr>
-    <tr>
-      <td><a href="#art">Art Club</a></td>
-      <td>Drawing, painting and exhibitions</td>
-      <td>Tuesday</td>
-      <td>27</td>
-    </tr>
-    <tr>
-      <td><a href="#football">Football Club</a></td>
-      <td class="sports">Sports</td>
-      <td>Weekly matches and training</td>
-      <td>Tuesday</td>
-      <td>60</td>
-    </tr>
-    <tr>
-      <td><a href="#volunteer">Volunteer Group</a></td>
-      <td class="volun">Volunteering</td>
-      <td>Community and campus service activities</td>
-      <td>Wednesday and Thursday</td>
-      <td>55</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="4">Total members </td>
-      <td>263</td>
-    </tr>
-  </tfoot>
-</table>
-
-<h2>Club profiles</h2>
-<div class="club" id="coding">
-  <img src="images/club-coding.png" alt="Code brackets symbol for the Coding Club" width="240" height="160" />
-  <h3>Coding Club</h3>
-  <p>For students who like building things with code. Beginners are welcome.</p>
-  <ul>
-    <li>Category: Academic</li>
-    <li>Meets: Sunday and Thursday</li>
-    <li>Activities: web development workshops, coding challenges</li>
-  </ul>
-</div>
-<div class="club" id="debate">
-  <img src="images/club-debate.png" alt="Two speech bubbles for the Debate Club" width="240" height="160" />
-  <h3>Debate Club</h3>
-  <p>Practise speaking with confidence and learn how to build a strong argument.</p>
-  <ul>
-    <li>Category: Academic</li>
-    <li>Meets: Monday</li>
-    <li>Activities: public speaking nights, friendly debates</li>
-  </ul>
-</div>
-<div class="club" id="photography">
-  <img src="images/club-photography.png" alt="Camera symbol for the Photography Club" width="240" height="160" />
-  <h3>Photography Club</h3>
-  <p>Capture campus life through photos and short videos.</p>
-  <ul>
-    <li>Category: Culture</li>
-    <li>Meets: Monday and Wednesday</li>
-    <li>Activities: photo walks, editing sessions</li>
-  </ul>
-</div>
-<div class="club" id="art">
-  <img src="images/club-art.png" alt="Painter palette symbol for the Art Club" width="240" height="160" />
-  <h3>Art Club</h3>
-  <p>A relaxed space to draw, paint and show your work to others.</p>
-  <ul>
-    <li>Category: Culture</li>
-    <li>Meets: Tuesday</li>
-    <li>Activities: drawing sessions, art exhibitions</li>
-  </ul>
-</div>
-<div class="club" id="football">
-  <img src="images/club-football.png" alt="Football symbol for the Football Club" width="240" height="160" />
-  <h3>Football Club</h3>
-  <p>Weekly training and friendly matches for all skill levels.</p>
-  <ul>
-    <li>Category: Sports</li>
-    <li>Meets: Tuesday</li>
-    <li>Activities: training, friendly matches</li>
-  </ul>
-</div>
-<div class="club" id="volunteer">
-  <img src="images/club-volunteer.png" alt="Heart symbol for the Volunteer Group" width="240" height="160" />
-  <h3>Volunteer Group</h3>
-  <p>Give your time to help the campus and the community.</p>
-  <ul>
-    <li>Category: Volunteering</li>
-    <li>Meets: Wednesday and Thursday</li>
-    <li>Activities: campus clean-up days, community service</li>
-  </ul>
+<p id="clubCount" class="text-muted"></p>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover align-middle">
+    <caption class="caption-top fw-bold text-primary">Table 1: Club directory (sample data)</caption>
+    <thead class="table-dark">
+      <tr><th>#</th><th>Club</th><th>Category</th><th>Description</th><th>Meets</th><th class="text-end">Members</th><th>More</th></tr>
+    </thead>
+    <tbody id="clubBody"></tbody>
+    <tfoot class="table-secondary">
+      <tr><td colspan="5" class="fw-bold">Total members shown</td><td id="clubTotal" class="text-end fw-bold"></td><td></td></tr>
+    </tfoot>
+  </table>
 </div>
 
-<p class="sale">Ready to take part? Go to the <a href="join.html">Join a Club</a> page and send your request.</p>
+<!-- Add a club -->
+<div class="card my-4">
+  <div class="card-header bg-success text-white fw-bold">Add a new club</div>
+  <div class="card-body">
+    <div id="clubAdded" class="alert alert-success d-none">The club was added to the table.</div>
+    <form id="addClubForm" novalidate onsubmit="return addClub(event)">
+      <div class="row">
+        <div class="col-12 col-md-6">
+<div class="mb-3">
+  <label for="newName" class="form-label">Club name</label>
+  <input type="text" class="form-control" id="newName" name="name"  placeholder="e.g. Chess Club" required minlength="3">
+  <div class="valid-feedback">Looks good!</div>
+  <div class="invalid-feedback">Please enter the club name.</div>
+</div>
+        </div>
+        <div class="col-12 col-md-6">
+<div class="mb-3">
+  <label for="newCategory" class="form-label">Category</label>
+  <select class="form-select" id="newCategory" name="category" required><option value="">Choose...</option><option value="Academic">Academic</option><option value="Culture">Culture</option><option value="Sports">Sports</option><option value="Volunteering">Volunteering</option></select>
+  <div class="valid-feedback">Looks good!</div>
+  <div class="invalid-feedback">Please choose an option.</div>
+</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6">
+<div class="mb-3">
+  <label for="newMeets" class="form-label">Meeting days</label>
+  <input type="text" class="form-control" id="newMeets" name="meets"  placeholder="e.g. Sunday" required>
+  <div class="valid-feedback">Looks good!</div>
+  <div class="invalid-feedback">Please enter the meeting days.</div>
+</div>
+        </div>
+        <div class="col-12 col-md-6">
+<div class="mb-3">
+  <label for="newMembers" class="form-label">Number of members</label>
+  <input type="number" class="form-control" id="newMembers" name="members"  placeholder="e.g. 20" required min="1" max="500">
+  <div class="valid-feedback">Looks good!</div>
+  <div class="invalid-feedback">Enter a number from 1 to 500.</div>
+</div>
+        </div>
+      </div>
+<div class="mb-3">
+  <label for="newDescription" class="form-label">Description</label>
+  <textarea class="form-control" id="newDescription" name="description" rows="2" placeholder="What does the club do?" required></textarea>
+  <div class="valid-feedback">Looks good!</div>
+  <div class="invalid-feedback">Please describe the club.</div>
+</div>
+      <button type="submit" class="btn btn-success me-2">Add club</button>
+      <button type="reset" class="btn btn-outline-secondary">Clear</button>
+    </form>
+  </div>
 </div>
 
-
-<div id="footer">
-  <hr />
-  <p>&copy; 2026 ClubConnect ,Sultan Qaboos University</p>
-  <p><a href="index.html">Home</a> | <a href="about.html">About Us</a> | <a href="contact.html">Contact Us</a></p>
+<h2 class="h3 text-primary">Club profiles</h2>
+<div class="row g-3 mb-4">
+  <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
+    <img src="images/club-coding.png" class="card-img-top" alt="Code brackets symbol for the Coding Club" width="480" height="320">
+    <div class="card-body"><h3 class="card-title h5">Coding Club</h3><p class="card-text">For students who like building things with code. Beginners are welcome.</p>
+    <ul class="list-unstyled mb-0 small"><li><strong>Category:</strong> Academic</li><li><strong>Meets:</strong> Sunday and Thursday</li></ul></div></div></div>
+  <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
+    <img src="images/club-debate.png" class="card-img-top" alt="Two speech bubbles for the Debate Club" width="480" height="320">
+    <div class="card-body"><h3 class="card-title h5">Debate Club</h3><p class="card-text">Practise speaking with confidence and learn to build a strong argument.</p>
+    <ul class="list-unstyled mb-0 small"><li><strong>Category:</strong> Academic</li><li><strong>Meets:</strong> Monday</li></ul></div></div></div>
+  <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
+    <img src="images/club-photography.png" class="card-img-top" alt="Camera symbol for the Photography Club" width="480" height="320">
+    <div class="card-body"><h3 class="card-title h5">Photography Club</h3><p class="card-text">Capture campus life through photos and short videos.</p>
+    <ul class="list-unstyled mb-0 small"><li><strong>Category:</strong> Culture</li><li><strong>Meets:</strong> Monday and Wednesday</li></ul></div></div></div>
+  <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
+    <img src="images/club-art.png" class="card-img-top" alt="Painter palette symbol for the Art Club" width="480" height="320">
+    <div class="card-body"><h3 class="card-title h5">Art Club</h3><p class="card-text">A relaxed space to draw, paint and show your work.</p>
+    <ul class="list-unstyled mb-0 small"><li><strong>Category:</strong> Culture</li><li><strong>Meets:</strong> Tuesday</li></ul></div></div></div>
+  <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
+    <img src="images/club-football.png" class="card-img-top" alt="Football symbol for the Football Club" width="480" height="320">
+    <div class="card-body"><h3 class="card-title h5">Football Club</h3><p class="card-text">Weekly training and friendly matches for all skill levels.</p>
+    <ul class="list-unstyled mb-0 small"><li><strong>Category:</strong> Sports</li><li><strong>Meets:</strong> Tuesday</li></ul></div></div></div>
+  <div class="col-12 col-md-6 col-lg-4"><div class="card h-100">
+    <img src="images/club-volunteer.png" class="card-img-top" alt="Heart symbol for the Volunteer Group" width="480" height="320">
+    <div class="card-body"><h3 class="card-title h5">Volunteer Group</h3><p class="card-text">Give your time to help the campus and the community.</p>
+    <ul class="list-unstyled mb-0 small"><li><strong>Category:</strong> Volunteering</li><li><strong>Meets:</strong> Wednesday and Thursday</li></ul></div></div></div>
 </div>
 
+<!-- Details window (Bootstrap modal) filled by clubs.js -->
+<div class="modal fade" id="clubModal" role="dialog" tabindex="-1" aria-labelledby="clubModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h2 class="modal-title h5" id="clubModalTitle">Club</h2>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="clubModalBody"></div>
+      <div class="modal-footer">
+        <a href="join.html" class="btn btn-success">Join a club</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
 
+<!-- Footer (same on every page) -->
+<footer class="bg-dark text-white text-center py-3 ">
+  <div class="container">
+    <p class="mb-1">&copy; 2026 ClubConnect - COMP3700 Project Part III, Sultan Qaboos University</p>
+    <p class="mb-1 small text-white-50">Prepared by Mohammed Abdulrahman Alazri (ID 138949). All clubs, events and numbers are sample data.</p>
+    <p class="mb-0 small"><a class="link-warning" href="index.html">Home</a> | <a class="link-warning" href="about.html">About Us</a> | <a class="link-warning" href="contact.html">Contact Us</a></p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="js/common.js"></script>
+<script src="js/clubs.js"></script>
 </body>
 </html>

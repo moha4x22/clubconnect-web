@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Feedback questionnaire with JavaScript validation for ClubConnect students.">
+<meta name="author" content="Mohammed Abdulrahman Alazri">
+<title>Questionnaire - ClubConnect</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="bg-light">
+
+<!-- Navigation bar (same on every page). It collapses into a menu button on small screens. -->
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/logo.png" alt="ClubConnect logo" width="56" height="31" class="me-2 rounded">
+      <span class="fw-bold text-warning">ClubConnect</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Show or hide the menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="clubs.html">Clubs</a></li>
+        <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="join.html">Join a Club</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="questionnaire.html">Questionnaire</a></li>
+        <li class="nav-item"><a class="nav-link" href="calculator.html">Calculator</a></li>
+        <li class="nav-item"><a class="nav-link" href="funpage.html">Fun Page</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container my-4">
+<h1 class="text-primary">Questionnaire</h1>
+<p class="lead">Tell us what you think about ClubConnect. Every field is checked while you type, and you will see a green or red message.</p>
+
+<div class="row justify-content-center">
+<div class="col-12 col-lg-9">
+<form id="questionnaireForm" class="card card-body shadow-sm" novalidate onsubmit="return submitQuestionnaire(event)">
+  <h2 class="h5 text-primary">About you</h2>
+  <div class="row">
+    <div class="col-12 col-md-6 mb-3">
+      <label for="qName" class="form-label">Full name</label>
+      <input type="text" class="form-control" id="qName" placeholder="e.g. Mohammed Alazri" oninput="validateName()">
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Enter your full name.</div>
+    </div>
+    <div class="col-12 col-md-6 mb-3">
+      <label for="qEmail" class="form-label">SQU e-mail</label>
+      <input type="text" class="form-control" id="qEmail" placeholder="s123456@student.squ.edu.om" oninput="validateEmail()">
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Use your SQU e-mail.</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 mb-3">
+      <label for="qPhone" class="form-label">Mobile number</label>
+      <input type="text" class="form-control" id="qPhone" placeholder="e.g. 9123 4567" oninput="validatePhone()">
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Enter an Omani mobile number.</div>
+    </div>
+    <div class="col-12 col-md-6 mb-3">
+      <label for="qClub" class="form-label">Your favourite club</label>
+      <select class="form-select" id="qClub">
+        <option>Coding Club</option><option>Debate Club</option><option>Photography Club</option>
+        <option>Art Club</option><option>Football Club</option><option>Volunteer Group</option>
+      </select>
+    </div>
+  </div>
+
+  <h2 class="h5 text-primary mt-2">Your opinion</h2>
+  <div class="mb-3">
+    <div class="form-label">How satisfied are you with ClubConnect? (1 = poor, 5 = excellent)</div>
+    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="rating" id="r1" value="1" onchange="validateRating()"><label class="form-check-label" for="r1">1</label></div>
+    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="rating" id="r2" value="2" onchange="validateRating()"><label class="form-check-label" for="r2">2</label></div>
+    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="rating" id="r3" value="3" onchange="validateRating()"><label class="form-check-label" for="r3">3</label></div>
+    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="rating" id="r4" value="4" onchange="validateRating()"><label class="form-check-label" for="r4">4</label></div>
+    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="rating" id="r5" value="5" onchange="validateRating()"><label class="form-check-label" for="r5">5</label></div>
+    <div id="ratingMsg" class="text-danger small d-none">Please choose a rating.</div>
+  </div>
+  <div class="mb-3">
+    <div class="form-label">What are you interested in?</div>
+    <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="interest" id="i1" value="Workshops" onchange="validateInterests()"><label class="form-check-label" for="i1">Workshops</label></div>
+    <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="interest" id="i2" value="Competitions" onchange="validateInterests()"><label class="form-check-label" for="i2">Competitions</label></div>
+    <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="interest" id="i3" value="Trips" onchange="validateInterests()"><label class="form-check-label" for="i3">Trips</label></div>
+    <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="interest" id="i4" value="Community service" onchange="validateInterests()"><label class="form-check-label" for="i4">Community service</label></div>
+    <div id="interestMsg" class="text-danger small d-none">Please tick at least one interest.</div>
+  </div>
+  <div class="mb-3">
+    <label for="qComment" class="form-label">Your comments</label>
+    <textarea class="form-control" id="qComment" rows="4" placeholder="What do you like? What should we improve?" oninput="validateComment()"></textarea>
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">Write a comment.</div>
+    <div id="commentCount" class="form-text text-end">0 / 300</div>
+  </div>
+  <div class="form-check form-switch mb-3">
+    <input class="form-check-input" type="checkbox" role="switch" id="news" name="news">
+    <label class="form-check-label" for="news">Send me news about new clubs and events</label>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary me-2">Send questionnaire</button>
+    <button type="button" class="btn btn-outline-secondary" onclick="resetQuestionnaire()">Clear form</button>
+  </div>
+</form>
+</div>
+</div>
+
+<!-- Hidden button that opens the Thank-you window (clicked by questionnaire.js) -->
+<button type="button" id="openThanks" class="d-none" data-bs-toggle="modal" data-bs-target="#thanksModal">Open</button>
+<div class="modal fade" id="thanksModal" role="dialog" tabindex="-1" aria-labelledby="thanksTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h2 class="modal-title h5" id="thanksTitle">Thank you for your feedback!</h2>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="thanksBody"></div>
+      <div class="modal-footer"><button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button></div>
+    </div>
+  </div>
+</div>
+</main>
+
+<!-- Footer (same on every page) -->
+<footer class="bg-dark text-white text-center py-3 ">
+  <div class="container">
+    <p class="mb-1">&copy; 2026 ClubConnect - COMP3700 Project Part III, Sultan Qaboos University</p>
+    <p class="mb-1 small text-white-50">Prepared by Mohammed Abdulrahman Alazri (ID 138949). All clubs, events and numbers are sample data.</p>
+    <p class="mb-0 small"><a class="link-warning" href="index.html">Home</a> | <a class="link-warning" href="about.html">About Us</a> | <a class="link-warning" href="contact.html">Contact Us</a></p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="js/common.js"></script>
+<script src="js/questionnaire.js"></script>
+</body>
+</html>

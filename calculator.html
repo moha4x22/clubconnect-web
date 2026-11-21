@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Membership and event cost calculator with discounts for SQU students.">
+<meta name="author" content="Mohammed Abdulrahman Alazri">
+<title>Cost Calculator - ClubConnect</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="bg-light">
+
+<!-- Navigation bar (same on every page). It collapses into a menu button on small screens. -->
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="images/logo.png" alt="ClubConnect logo" width="56" height="31" class="me-2 rounded">
+      <span class="fw-bold text-warning">ClubConnect</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Show or hide the menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="clubs.html">Clubs</a></li>
+        <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="join.html">Join a Club</a></li>
+        <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="calculator.html">Calculator</a></li>
+        <li class="nav-item"><a class="nav-link" href="funpage.html">Fun Page</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container my-4">
+<h1 class="text-primary">Membership and event cost calculator</h1>
+<p class="lead">Joining clubs and going to events costs a little money. This calculator shows your bill before you join, so you can plan your budget. Fees are sample data.</p>
+
+<div class="row g-4">
+  <div class="col-12 col-lg-6">
+    <form id="calcForm" class="card card-body" novalidate onsubmit="return calculate(event)">
+      <div class="row">
+        <div class="col-6 mb-3">
+          <label for="age" class="form-label">Your age</label>
+          <input type="number" class="form-control" id="age" min="10" max="100" required placeholder="e.g. 20">
+          <div class="invalid-feedback">Enter an age from 10 to 100.</div>
+        </div>
+        <div class="col-6 mb-3">
+          <label for="memberType" class="form-label">You are a</label>
+          <select class="form-select" id="memberType">
+            <option value="student">SQU student</option>
+            <option value="staff">SQU staff</option>
+            <option value="guest">Guest</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="form-label">Clubs you want to join (yearly fee)</div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="club_coding"><label class="form-check-label" for="club_coding">Coding Club - 5 OMR</label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="club_debate"><label class="form-check-label" for="club_debate">Debate Club - 3 OMR</label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="club_photography"><label class="form-check-label" for="club_photography">Photography Club - 6 OMR</label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="club_art"><label class="form-check-label" for="club_art">Art Club - 4 OMR</label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="club_football"><label class="form-check-label" for="club_football">Football Club - 8 OMR</label></div>
+<div class="form-check"><input class="form-check-input" type="checkbox" id="club_volunteer"><label class="form-check-label" for="club_volunteer">Volunteer Group - 0 OMR</label></div>
+      </div>
+      <div class="mb-3">
+        <label for="tickets" class="form-label">Event tickets (2 OMR each)</label>
+        <input type="number" class="form-control" id="tickets" min="0" max="20" value="0" required>
+        <div class="invalid-feedback">Enter a number from 0 to 20.</div>
+      </div>
+      <div class="form-check form-switch mb-3">
+        <input class="form-check-input" type="checkbox" role="switch" id="tshirt">
+        <label class="form-check-label" for="tshirt">Add a club T-shirt (4 OMR)</label>
+      </div>
+      <div><button type="submit" class="btn btn-success me-2">Calculate</button><button type="button" class="btn btn-outline-secondary" onclick="clearCalculator()">Clear</button></div>
+    </form>
+  </div>
+  <div class="col-12 col-lg-6">
+    <div id="result"></div>
+    <div class="card">
+      <div class="card-header bg-primary text-white fw-bold">How the bill is calculated</div>
+      <div class="card-body">
+        <p class="mb-2"><strong>Total = (club fees + tickets + T-shirt - free tickets - bundle discount) - senior discount + service fee</strong></p>
+        <ul class="mb-0">
+          <li>Club fees are multiplied by 1 for students, 1.5 for staff and 2 for guests.</li>
+          <li>Every 4th ticket is free.</li>
+          <li>Joining 3 or more clubs gives 15% off the club fees.</li>
+          <li>Ages 60 and above get 10% off.</li>
+          <li>Service fee is 5%, but it is free for students who join a club and for ages 60 and above.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<!-- Footer (same on every page) -->
+<footer class="bg-dark text-white text-center py-3 ">
+  <div class="container">
+    <p class="mb-1">&copy; 2026 ClubConnect - COMP3700 Project Part III, Sultan Qaboos University</p>
+    <p class="mb-1 small text-white-50">Prepared by Mohammed Abdulrahman Alazri (ID 138949). All clubs, events and numbers are sample data.</p>
+    <p class="mb-0 small"><a class="link-warning" href="index.html">Home</a> | <a class="link-warning" href="about.html">About Us</a> | <a class="link-warning" href="contact.html">Contact Us</a></p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="js/common.js"></script>
+<script src="js/calculator.js"></script>
+</body>
+</html>
